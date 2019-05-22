@@ -290,6 +290,7 @@ jobs:
           if [ -d "${DEST_DIR}" ]; then
             cd ${DEST_DIR}
             rm -rfv *
+            touch .gitkeep
             git add .
             git commit -m"Reset COA generated pipelines" --allow-empty
           fi

@@ -15,7 +15,8 @@
 platform: linux
 image_resource:
   type: docker-image
-  source: {repository: orangecloudfoundry/cf-ops-automation, tag: develop-latest}
+#  source: {repository: orangecloudfoundry/cf-ops-automation, tag: develop-latest}
+  source: {repository: orangecloudfoundry/cf-ops-automation, tag: PR-261}
 inputs:
   - name: cf-ops-automation
 outputs:
