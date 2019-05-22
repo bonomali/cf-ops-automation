@@ -265,6 +265,7 @@ jobs:
     - get: cf-ops-automation
       params: { submodules: none}
       passed: [ manual-reset-avoid-please ]
+      trigger: true
 
   - task: delete-generated-pipelines
     config:
