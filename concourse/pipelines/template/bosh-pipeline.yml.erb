@@ -124,6 +124,7 @@ resources:
   source:
     name: ((stemcell-name-prefix))((stemcell-main-name))
   version: { version: "((stemcell-version))" }
+  <% end %>
 <% end %>
 
 <% enabled_deployments.sort.each do |name, boshrelease|
