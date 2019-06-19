@@ -234,7 +234,7 @@ resources:
     user: <%= info['repository'].split('/').first %>
     repository: <%= info['repository'].split('/').last %>
     access_token: ((bot-github-access-token))
-#  version: ( (<%#= release %>-version) )
+#  version: tag:( (<%#= release %>-version) )
     <% end %>
   <% end %>
 <% end %>
