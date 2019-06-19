@@ -118,11 +118,12 @@ resources:
     secret_access_key: ((s3-stemcell-secret-key))
     endpoint: ((s3-stemcell-endpoint))
     skip_ssl_verification: ((s3-stemcell-skip-ssl-verification))
+  version: { path: ((stemcell-name-prefix))((stemcell-main-name))/bosh-stemcell-((stemcell-version))-((stemcell-main-name)).tgz }
   <% else %>
   type: bosh-io-stemcell
   source:
     name: ((stemcell-name-prefix))((stemcell-main-name))
-  <% end %>
+  version: { version: "((stemcell-version))" }
 <% end %>
 
 <% enabled_deployments.sort.each do |name, boshrelease|
@@ -475,11 +476,6 @@ jobs:
     - get: secrets-full-writer
       params: { submodules: none}
     - get: ((stemcell-main-name))
-      <% if offline_stemcells_enabled %>
-      version: { path: ((stemcell-name-prefix))((stemcell-main-name))/bosh-stemcell-((stemcell-version))-((stemcell-main-name)).tgz }
-      <% else %>
-      version: { version: "((stemcell-version))" }
-      <% end %>
       trigger: true
       attempts: 2
     - get: cf-ops-automation
@@ -491,9 +487,9 @@ jobs:
       version: { path: <%= info['repository']&.split('/')&.first %>/<%= release %>-((<%= release %>-version)).tgz }
     <% else %>
       <% if PipelineHelpers.bosh_io_hosted?(info) %>
-      version: { version: "((<%= release %>-version))" }
+      version: { version: ((<%= release %>-version)) }
       <% else %>
-      # ((<%= release %>-version)) is pinned, see resource declaration
+      # <%= release %>-version is pinned, see resource declaration
       <% end %>
     <% end %>
       trigger: true
