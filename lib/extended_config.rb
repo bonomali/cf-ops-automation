@@ -4,6 +4,7 @@ require 'fileutils'
 # Hold configuration retrieved from environment variable
 class ExtendedConfig
   IAAS_TYPE_KEY = 'IAAS_TYPE'.freeze
+  PROFILES_KEY = 'PROFILES'.freeze
   DEFAULT_IAAS_TYPE = 'openstack'.freeze
 
   attr_reader :extended_config
@@ -11,7 +12,8 @@ class ExtendedConfig
   def default_config
     {
       'default' => {
-        'iaas' => default_iaas_type
+        'iaas' => default_iaas_type,
+        'profiles' => []
       }
     }
   end
@@ -40,6 +42,11 @@ class ExtendedConfigBuilder
 
   def build
     ExtendedConfig.new(@current_config)
+  end
+
+  def with_profiles(profiles)
+    @current_config[ExtendedConfig::PROFILES_KEY] = profiles
+    self
   end
 
   def with_iaas_type(name)

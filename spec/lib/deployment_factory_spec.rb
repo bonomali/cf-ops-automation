@@ -59,6 +59,17 @@ describe DeploymentFactory do
     let(:loaded_deployment) { deployment_factory.load_file_with_iaas('dummy-filename.yml') }
     let(:my_deployment) { loaded_deployment.first }
 
+    context 'when no profiles file exists' do
+      let(:current_profiles) { 'a_custom_iaas' }
+
+      it 'loads deployment-dependencies.yml' do
+        allow(config).to receive(:iaas_type).and_return(current_iaas_type)
+        allow(deployment_factory).to receive(:load_file).with('dummy-filename.yml').and_return(generic_deployment)
+        allow(File).to receive(:exist?).with("dummy-filename-#{current_iaas_type}.yml").and_return(false)
+
+        expect(my_deployment.details).to eq(Deployment.default_details)
+      end
+    end
     context 'when no iaas file exists' do
       let(:current_iaas_type) { 'a_custom_iaas' }
 

@@ -56,4 +56,8 @@ class Config
   def iaas_type
     @loaded_config['default']['iaas']
   end
+
+  def profiles
+    @loaded_config.dig('default','profiles') || []
+    end
 end

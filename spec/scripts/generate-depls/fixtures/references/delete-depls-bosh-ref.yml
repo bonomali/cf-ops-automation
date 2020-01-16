@@ -219,7 +219,7 @@ jobs:
     - task: generate-delete-depls-all-config
       input_mapping: {scripts-resource: cf-ops-automation, credentials-resource: secrets-delete-depls-limited, additional-resource: paas-templates-delete-depls}
       output_mapping: {generated-files: config-manifest}
-      file: cf-ops-automation/concourse/tasks/generate-manifest.yml
+      file: cf-ops-automation/concourse/tasks/generate-manifest/task.yml
       params:
         SPRUCE_FILE_BASE_PATH: credentials-resource/delete-depls/
         YML_TEMPLATE_DIR: additional-resource/delete-depls/template

@@ -227,7 +227,7 @@ jobs:
     - task: generate-simple-depls-all-config
       input_mapping: {scripts-resource: cf-ops-automation, credentials-resource: secrets-simple-depls-limited, additional-resource: paas-templates-simple-depls}
       output_mapping: {generated-files: config-manifest}
-      file: cf-ops-automation/concourse/tasks/generate-manifest.yml
+      file: cf-ops-automation/concourse/tasks/generate-manifest/task.yml
       params:
         SPRUCE_FILE_BASE_PATH: credentials-resource/simple-depls/
         YML_TEMPLATE_DIR: additional-resource/simple-depls/template
@@ -400,7 +400,7 @@ jobs:
       credentials-resource: secrets-ntp-with-scan
       additional-resource: paas-templates-ntp-with-scan
     output_mapping: {generated-files: release-manifest}
-    file: cf-ops-automation/concourse/tasks/generate-manifest.yml
+    file: cf-ops-automation/concourse/tasks/generate-manifest/task.yml
     params:
       SPRUCE_FILE_BASE_PATH: credentials-resource/simple-depls/ntp-with-scan/
       YML_TEMPLATE_DIR: additional-resource/simple-depls/ntp-with-scan/template
@@ -612,7 +612,7 @@ jobs:
       credentials-resource: secrets-full-writer
       additional-resource: paas-templates-zookeeper-without-scan
     output_mapping: {generated-files: release-manifest}
-    file: cf-ops-automation/concourse/tasks/generate-manifest.yml
+    file: cf-ops-automation/concourse/tasks/generate-manifest/task.yml
     params:
       SPRUCE_FILE_BASE_PATH: credentials-resource/simple-depls/zookeeper-without-scan/
       YML_TEMPLATE_DIR: additional-resource/simple-depls/zookeeper-without-scan/template

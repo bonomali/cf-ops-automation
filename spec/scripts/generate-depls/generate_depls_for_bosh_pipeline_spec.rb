@@ -84,7 +84,7 @@ describe 'generate-depls for bosh pipeline' do
 
       it 'generates a post-generate task' do
         manifest_generation_task = deployment_plan.select { |task| task['task'] == 'generate-ntp-with-scan-manifest' }.first
-        expect(manifest_generation_task).to include('file' => 'cf-ops-automation/concourse/tasks/generate-manifest.yml')
+        expect(manifest_generation_task).to include('file' => 'cf-ops-automation/concourse/tasks/generate-manifest/task.yml')
       end
 
       it 'generates a pre-bosh-deploy task' do

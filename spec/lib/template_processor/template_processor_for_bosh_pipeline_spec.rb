@@ -537,7 +537,7 @@ describe 'BoshPipelineTemplateProcessing' do
               "input_mapping" =>
                 { "scripts-resource" => "cf-ops-automation", "credentials-resource" => "secrets-my-root-depls-limited", "additional-resource" => "paas-templates-my-root-depls" },
               "output_mapping" => { "generated-files" => "terraform-tfvars" },
-              "file" => "cf-ops-automation/concourse/tasks/generate-manifest.yml",
+              "file" => "cf-ops-automation/concourse/tasks/generate-manifest/task.yml",
               "params" =>
              { "YML_FILES" =>
                          "./credentials-resource/shared/secrets.yml\n./credentials-resource/my-tfstate-location/secrets/meta.yml\n./credentials-resource/my-tfstate-location/secrets/secrets.yml\n./additional-resource/meta-inf.yml\n",

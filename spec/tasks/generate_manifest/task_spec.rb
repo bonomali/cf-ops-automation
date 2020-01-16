@@ -12,7 +12,7 @@ describe 'generate_manifest task' do
     before(:context) do
       @generated_files = Dir.mktmpdir
 
-      @output = execute('-c concourse/tasks/generate-manifest.yml ' \
+      @output = execute('-c concourse/tasks/generate-manifest/task.yml ' \
         '-i scripts-resource=. ' \
         '-i credentials-resource=spec/tasks/generate_manifest/credentials-resource ' \
         '-i additional-resource=spec/tasks/generate_manifest/additional-resource ' \
@@ -41,7 +41,7 @@ describe 'generate_manifest task' do
       @generated_files = Dir.mktmpdir
       @additional_resource = File.join(File.dirname(__FILE__), 'additional-resource')
 
-      @output = execute('-c concourse/tasks/generate-manifest.yml ' \
+      @output = execute('-c concourse/tasks/generate-manifest/task.yml ' \
         '-i scripts-resource=. ' \
         '-i credentials-resource=spec/tasks/generate_manifest/credentials-resource ' \
         "-i additional-resource=#{@additional_resource} " \
@@ -91,7 +91,7 @@ describe 'generate_manifest task' do
 
     context 'when processing an invalid template' do
       before(:context) do
-        @output = execute('-c concourse/tasks/generate-manifest.yml ' \
+        @output = execute('-c concourse/tasks/generate-manifest/task.yml ' \
         '-i scripts-resource=. ' \
         '-i credentials-resource=spec/tasks/generate_manifest/credentials-resource ' \
         '-i additional-resource=spec/tasks/generate_manifest/additional-resource ' \
@@ -122,7 +122,7 @@ describe 'generate_manifest task' do
 
     context 'when a post generate script is detected' do
       before(:context) do
-        @output = execute('-c concourse/tasks/generate-manifest.yml ' \
+        @output = execute('-c concourse/tasks/generate-manifest/task.yml ' \
         '-i scripts-resource=. ' \
         '-i credentials-resource=spec/tasks/generate_manifest/credentials-resource ' \
         '-i additional-resource=spec/tasks/generate_manifest/additional-resource ' \
@@ -167,7 +167,7 @@ describe 'generate_manifest task' do
       @generated_files = Dir.mktmpdir
       @additional_resource = File.join(File.dirname(__FILE__), 'additional-resource')
 
-      @output = execute('-c concourse/tasks/generate-manifest.yml ' \
+      @output = execute('-c concourse/tasks/generate-manifest/task.yml ' \
         '-i scripts-resource=. ' \
         '-i credentials-resource=spec/tasks/generate_manifest/credentials-resource ' \
         "-i additional-resource=#{@additional_resource} " \
@@ -226,7 +226,7 @@ describe 'generate_manifest task' do
         YAML
       end
 
-      @output = execute('-c concourse/tasks/generate-manifest.yml ' \
+      @output = execute('-c concourse/tasks/generate-manifest/task.yml ' \
         '-i scripts-resource=. ' \
         "-i credentials-resource=#{@credentials_dir} " \
         "-i additional-resource=#{@additional_resource} " \
@@ -272,7 +272,7 @@ describe 'generate_manifest task' do
       File.symlink('../dummy_symlink', a_symlink) unless File.symlink?(a_symlink)
       FileUtils.cp_r(@additional_resource_reference + '/.', @additional_resource)
 
-      @output = execute('-c concourse/tasks/generate-manifest.yml ' \
+      @output = execute('-c concourse/tasks/generate-manifest/task.yml ' \
         '-i scripts-resource=. ' \
         '-i credentials-resource=spec/tasks/generate_manifest/credentials-resource ' \
         "-i additional-resource=#{@additional_resource} " \
