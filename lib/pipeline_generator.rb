@@ -182,6 +182,10 @@ class PipelineGenerator
           opts.on('--iaas IAAS_TYPE', 'Target a specific iaas for pipeline generation') do |iaas_type|
             options[:iaas_type] = iaas_type
           end
+
+          opts.on('--profiles PROFILES', Array, 'List specific profiles to apply for pipeline generation,separated by "," (e.g. boostrap,feature-a,feature-b)') do |profiles_type|
+            options[:profiles] = profiles_type
+          end
         end
       end
     end
